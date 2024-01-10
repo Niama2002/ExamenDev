@@ -38,6 +38,27 @@ public class ProduitService {
         }
         return null; // Produit non trouvé
     }
+    
+ // Opération UPDATE
+    public void mettreAJourProduit(Produit produitMaj) {
+        // Vérification de l'existence du produit
+        if (produitExiste(produitMaj.getId())) {
+            // Validation des données
+            if (produitMaj.getPrix() >= 0 && produitMaj.getQuantite() >= 0) {
+                // Mise à jour des attributs du produit existant
+                Produit produitExist = trouverProduitParId(produitMaj.getId());
+                produitExist.setNom(produitMaj.getNom());
+                produitExist.setPrix(produitMaj.getPrix());
+                produitExist.setQuantite(produitMaj.getQuantite());
+                System.out.println("Produit mis à jour avec succès.");
+            } else {
+                System.out.println("Le prix et la quantité du produit doivent être positifs.");
+            }
+        } else {
+            System.out.println("Le produit à mettre à jour n'existe pas.");
+        }
+    }
+
 
     // Méthode utilitaire pour vérifier l'existence d'un produit par ID
     private boolean produitExiste(Long id) {
