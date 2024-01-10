@@ -3,6 +3,8 @@ package com.example;
 import java.util.ArrayList;
 import java.util.List;
 
+	//CREATE
+
 public class ProduitService {
 
     private List<Produit> produits;
@@ -26,6 +28,17 @@ public class ProduitService {
             System.out.println("Un produit avec le même ID ou nom existe déjà.");
         }
     }
+    
+    //READ
+    public Produit trouverProduitParId(Long id) {
+        for (Produit produit : produits) {
+            if (produit.getId().equals(id)) {
+                return produit;
+            }
+        }
+        return null; // Produit non trouvé
+    }
+
     // Méthode utilitaire pour vérifier l'existence d'un produit par ID
     private boolean produitExiste(Long id) {
         return produits.stream().anyMatch(produit -> produit.getId().equals(id));
