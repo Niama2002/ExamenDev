@@ -58,6 +58,19 @@ public class ProduitService {
             System.out.println("Le produit à mettre à jour n'existe pas.");
         }
     }
+    
+ // Opération DELETE
+    public void supprimerProduit(Long id) {
+        // Vérification de l'existence du produit
+        Produit produitASupprimer = trouverProduitParId(id);
+        if (produitASupprimer != null) {
+            produits.remove(produitASupprimer);
+            System.out.println("Produit supprimé avec succès.");
+        } else {
+            System.out.println("Le produit à supprimer n'existe pas.");
+        }
+    }
+
 
 
     // Méthode utilitaire pour vérifier l'existence d'un produit par ID
