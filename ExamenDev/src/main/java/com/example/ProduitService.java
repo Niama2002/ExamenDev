@@ -70,16 +70,17 @@ public class ProduitService {
             System.out.println("Le produit à supprimer n'existe pas.");
         }
     }
-
-
-
-    // Méthode utilitaire pour vérifier l'existence d'un produit par ID
+    
+    
     private boolean produitExiste(Long id) {
         return produits.stream().anyMatch(produit -> produit.getId().equals(id));
     }
 
-    // Méthode utilitaire pour vérifier l'existence d'un produit par nom
     private boolean produitExiste(String nom) {
         return produits.stream().anyMatch(produit -> produit.getNom().equals(nom));
+    }
+
+    public List<Produit> getProduits() {
+        return produits;
     }
 }
